@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;900&display=swap");
+
+:root {
+  --font-family-inter: "Inter", sans-serif;
+  --font-family-roboto: "Roboto", sans-serif;
+}
+
 *,
 *::after,
 *::before {
@@ -10,4 +17,180 @@ html,
 body {
   height: 100%;
   overflow: hidden;
+  font-family: var(--font-family-inter);
+  font-weight: 700;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  padding: 15px;
+  background-color: #f1eeee;
+}
+
+.books {
+  width: 40%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.show {
+  width: 60%;
+  background-color: #e5e5e5;
+  padding: 20px 10px;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 40px;
+  letter-spacing: -0.022em;
+  margin-bottom: 10px;
+}
+
+.show h2 {
+  padding-left: 20px;
+}
+.show div {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+
+  letter-spacing: -0.006em;
+
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.books > div,
+form {
+  padding: 10px;
+  background-color: #fff;
+  height: 250px;
+  margin-bottom: 20px;
+}
+
+.books > div {
+  display: flex;
+  flex-direction: column;
+}
+
+ul {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+li {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+li h4 {
+  flex-grow: 1;
+  font-size: 20px;
+  line-height: 22px;
+  letter-spacing: -0.017em;
+}
+
+button {
+  font-family: var(--font-family-roboto);
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 15px;
+
+  background-color: #fff;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 2px solid #000000;
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: #f1eeee;
+}
+
+.drop-area {
+  font-family: var(--font-family-roboto);
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: #000000;
+
+  padding: 14px;
+  text-align: center;
+  background-color: #f1f0f0;
+  border: 1px dashed #000000;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#descriptionTitle {
+  flex-grow: 1;
+  resize: none;
+}
+
+label {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.form-head {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+form button {
+  padding: 10px 20px;
+}
+
+input[type="text"],
+textarea {
+  font-family: var(--font-family-roboto);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  padding: 5px;
+  border: 2px solid #000;
+  outline: none;
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.file-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-family-roboto);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  padding: 10px;
+  border: 2px solid #000;
+  cursor: pointer;
 }

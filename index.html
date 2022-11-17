@@ -5,9 +5,96 @@
     <link rel="icon" type="image/svg+xml" href="./public/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <main></main>
+    <main>
+      <div class="books">
+        <h2>Любимые книги</h2>
+        <div>
+          <ul>
+            <li>
+              <h4>Книга №1</h4>
+              <button>Ред.</button>
+              <button>Прочитана</button>
+              <button>Читать</button>
+              <button>х</button>
+            </li>
+          </ul>
+          <div class="drop-area">Drop down area</div>
+        </div>
+        <h2>Список книг</h2>
+        <div>
+          <ul>
+            <li>
+              <h4>Книга №2</h4>
+              <button>Ред.</button>
+              <button>Прочитана</button>
+              <button>Читать</button>
+              <button>х</button>
+            </li>
+          </ul>
+          <div class="drop-area">Drop down area</div>
+        </div>
+        <h2>Добавить книгу</h2>
+        <form action="#">
+          <div class="form-head">
+            <div>
+              <div>
+                <input type="radio" id="download" name="add" value="download" />
+                <label for="download">Загрузить книгу</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  id="write"
+                  name="add"
+                  value="write"
+                  checked
+                />
+                <label for="write">Написать самому</label>
+              </div>
+            </div>
+            <button>Add book</button>
+          </div>
+
+          <label class="file-upload">
+            <input type="file" />
+            Upload book as file
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 16.2422C2.79401 15.435 2 14.0602 2 12.5C2 10.1564 3.79151 8.23129 6.07974 8.01937C6.54781 5.17213 9.02024 3 12 3C14.9798 3 17.4522 5.17213 17.9203 8.01937C20.2085 8.23129 22 10.1564 22 12.5C22 14.0602 21.206 15.435 20 16.2422M8 17L12 21M12 21L16 17M12 21V12"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </label>
+
+          <input id="titleInput" type="text" placeholder="Заголовок" />
+          <textarea
+            id="descriptionTitle"
+            type="text"
+            placeholder="Описание"
+          ></textarea>
+        </form>
+      </div>
+      <div class="show">
+        <h2>Book #1</h2>
+        <div>
+          Далеко-далеко, за словесными горами в стране гласных и согласных живут
+          рыбные тексты.
+        </div>
+      </div>
+    </main>
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>
