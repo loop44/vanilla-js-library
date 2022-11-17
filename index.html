@@ -37,7 +37,7 @@
           <div class="drop-area">Drop down area</div>
         </div>
         <h2>Добавить книгу</h2>
-        <form action="#">
+        <form action="#" id="book-form" class="write">
           <div class="form-head">
             <div>
               <div>
@@ -59,6 +59,13 @@
             <button>Add book</button>
           </div>
 
+          <input id="titleInput" type="text" placeholder="Заголовок" />
+          <textarea
+            id="descriptionTitle"
+            type="text"
+            placeholder="Описание"
+          ></textarea>
+
           <label class="file-upload">
             <input type="file" />
             Upload book as file
@@ -78,13 +85,6 @@
               />
             </svg>
           </label>
-
-          <input id="titleInput" type="text" placeholder="Заголовок" />
-          <textarea
-            id="descriptionTitle"
-            type="text"
-            placeholder="Описание"
-          ></textarea>
         </form>
       </div>
       <div class="show">
