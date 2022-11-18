@@ -36,7 +36,7 @@ main {
 }
 
 .books {
-  width: 40%;
+  width: 600px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -44,9 +44,10 @@ main {
 }
 
 .show {
-  width: 60%;
+  flex-grow: 1;
   background-color: #e5e5e5;
   padding: 20px 10px;
+  overflow-y: auto;
 }
 
 h2 {
@@ -71,10 +72,10 @@ h2 {
 
 .books > div,
 form {
-  padding: 10px;
   background-color: #fff;
   height: 250px;
   margin-bottom: 20px;
+  padding: 10px;
 }
 
 .books > div {
@@ -90,7 +91,8 @@ ul {
 li {
   display: flex;
   gap: 5px;
-  margin-bottom: 10px;
+  padding: 5px;
+  background-color: #fff;
 }
 
 li h4 {
@@ -199,6 +201,11 @@ input[type="file"] {
   display: none;
 }
 
-.download #descriptionTitle {
+.download #descriptionTitle,
+.download #titleInput {
   display: none;
+}
+
+.dragover {
+  background-color: aqua;
 }

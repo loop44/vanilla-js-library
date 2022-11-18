@@ -12,29 +12,13 @@
       <div class="books">
         <h2>Любимые книги</h2>
         <div>
-          <ul>
-            <li>
-              <h4>Книга №1</h4>
-              <button>Ред.</button>
-              <button>Прочитана</button>
-              <button>Читать</button>
-              <button>х</button>
-            </li>
-          </ul>
-          <div class="drop-area">Drop down area</div>
+          <ul id="books-favourite"></ul>
+          <div id="favorite-droppable" class="drop-area">Drop down area</div>
         </div>
         <h2>Список книг</h2>
         <div>
-          <ul>
-            <li>
-              <h4>Книга №2</h4>
-              <button>Ред.</button>
-              <button>Прочитана</button>
-              <button>Читать</button>
-              <button>х</button>
-            </li>
-          </ul>
-          <div class="drop-area">Drop down area</div>
+          <ul id="books-list"></ul>
+          <div id="books-list-droppable" class="drop-area">Drop down area</div>
         </div>
         <h2>Добавить книгу</h2>
         <form action="#" id="book-form" class="write">
@@ -59,15 +43,23 @@
             <button>Add book</button>
           </div>
 
-          <input id="titleInput" type="text" placeholder="Заголовок" />
+          <input
+            id="titleInput"
+            name="login"
+            type="text"
+            placeholder="Заголовок"
+            minlength="5"
+          />
           <textarea
             id="descriptionTitle"
+            name="description"
             type="text"
             placeholder="Описание"
+            minlength="10"
           ></textarea>
 
           <label class="file-upload">
-            <input type="file" />
+            <input id="file" type="file" />
             Upload book as file
             <svg
               width="24"
@@ -88,13 +80,11 @@
         </form>
       </div>
       <div class="show">
-        <h2>Book #1</h2>
-        <div>
-          Далеко-далеко, за словесными горами в стране гласных и согласных живут
-          рыбные тексты.
-        </div>
+        <h2 id="show-title"></h2>
+        <div id="show-window"></div>
       </div>
     </main>
+
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>
