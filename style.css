@@ -36,7 +36,7 @@ main {
 }
 
 .books {
-  width: 600px;
+  flex-grow: 1;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -44,7 +44,7 @@ main {
 }
 
 .show {
-  flex-grow: 1;
+  width: 60vw;
   background-color: #e5e5e5;
   padding: 20px 10px;
   overflow-y: auto;
@@ -144,7 +144,6 @@ form {
 
 #descriptionTitle {
   flex-grow: 1;
-  resize: none;
 }
 
 label {
@@ -172,6 +171,7 @@ textarea {
   padding: 5px;
   border: 2px solid #000;
   outline: none;
+  resize: none;
 }
 
 input[type="text"]::placeholder,
@@ -208,4 +208,57 @@ input[type="file"] {
 
 .dragover {
   background-color: aqua;
+}
+
+.popup-overlay {
+  background-color: rgba(71, 71, 71, 0);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.popup-overlay.visible {
+  background-color: rgba(71, 71, 71, 0.486);
+  pointer-events: all;
+}
+
+.popup {
+  opacity: 0;
+  width: 70vw;
+  height: 70vh;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.visible .popup {
+  opacity: 1;
+  width: 70vw;
+  height: 70vh;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup textarea {
+  flex-grow: 1;
+}
+
+.popup button {
+  padding: 30px;
+  border-radius: 0;
+  width: 50%;
+  align-self: center;
 }

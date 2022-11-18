@@ -1,5 +1,6 @@
 import { editBook, removeBook } from "./db";
 import { allBooksList, favouriteBooksList } from "./main";
+import editPopup from "./popup";
 
 const isReadText = "ПРОЧИТАЛ";
 const isNotReadText = "ПРОЧИТАНА";
@@ -47,6 +48,8 @@ const createBookElement = (book) => {
     document.getElementById("show-title").innerText = book.name;
     document.getElementById("show-window").innerText = book.text;
   };
+
+  editBtn.onclick = () => editPopup(book, bookElement);
 
   removeBtn.onclick = () => {
     removeBook(book.name);

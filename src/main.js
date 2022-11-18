@@ -50,6 +50,11 @@ form.addEventListener("submit", async (e) => {
 
   const formData = new FormData();
 
+  if (descriptionInput.value === "" || titleInput.value === "") {
+    alert("Для начала заполните заголовок и описание книги");
+    return;
+  }
+
   formData.append("login", localStorage.getItem("lib-login"));
 
   if (form.classList.contains("write")) {
