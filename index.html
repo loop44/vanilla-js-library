@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/vite.4a748afd.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    
+    <script type="module" crossorigin src="/assets/index.dde9ffaa.js"></script>
+    <link rel="stylesheet" href="/assets/index.0e66ca64.css">
+  </head>
+  <body>
+    <main>
+      <div class="books">
+        <h2>Любимые книги</h2>
+        <div>
+          <ul id="books-favourite"></ul>
+          <div id="favorite-droppable" class="drop-area">Drop down area</div>
+        </div>
+        <h2>Список книг</h2>
+        <div>
+          <ul id="books-list"></ul>
+          <div id="books-list-droppable" class="drop-area">Drop down area</div>
+        </div>
+        <h2>Добавить книгу</h2>
+        <form action="#" id="book-form" class="write">
+          <div class="form-head">
+            <div>
+              <div>
+                <input type="radio" id="download" name="add" value="download" />
+                <label for="download">Загрузить книгу</label>
+              </div>
+
+              <div>
+                <input
+                  type="radio"
+                  id="write"
+                  name="add"
+                  value="write"
+                  checked
+                />
+                <label for="write">Написать самому</label>
+              </div>
+            </div>
+            <button>Add book</button>
+          </div>
+
+          <input
+            id="titleInput"
+            name="login"
+            type="text"
+            placeholder="Заголовок"
+            minlength="5"
+          />
+          <textarea
+            id="descriptionTitle"
+            name="description"
+            type="text"
+            placeholder="Описание"
+            minlength="10"
+          ></textarea>
+
+          <label class="file-upload">
+            <input id="file" type="file" />
+            <span>Upload book as file</span>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 16.2422C2.79401 15.435 2 14.0602 2 12.5C2 10.1564 3.79151 8.23129 6.07974 8.01937C6.54781 5.17213 9.02024 3 12 3C14.9798 3 17.4522 5.17213 17.9203 8.01937C20.2085 8.23129 22 10.1564 22 12.5C22 14.0602 21.206 15.435 20 16.2422M8 17L12 21M12 21L16 17M12 21V12"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </label>
+        </form>
+      </div>
+      <div class="show">
+        <h2 id="show-title"></h2>
+        <div id="show-window"></div>
+      </div>
+    </main>
+    <div class="popup-overlay">
+      <div class="popup">
+        <input type="text" id="edit-header" />
+        <textarea id="edit-text"></textarea>
+        <button id="edit-submit">Edit book</button>
+      </div>
+    </div>
+
+    
+  </body>
+</html>
