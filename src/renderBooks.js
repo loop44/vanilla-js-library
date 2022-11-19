@@ -16,9 +16,6 @@ const renderBooks = (books) => {
     }
   });
 
-  console.log(notReadBooks);
-  console.log(readBooks);
-
   books = notReadBooks.concat(readBooks);
 
   books.forEach((book) => {

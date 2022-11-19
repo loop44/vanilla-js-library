@@ -11,7 +11,6 @@ export const initDB = () =>
     openRequest.onupgradeneeded = () => {
       db = openRequest.result;
       db.createObjectStore("books", { keyPath: "name" });
-      console.log("upgradeneded");
 
       const tx = openRequest.result.transaction;
       tx.oncomplete = () => {
@@ -21,26 +20,26 @@ export const initDB = () =>
 
     openRequest.onsuccess = () => {
       db = openRequest.result;
-      console.log("success");
       resolve(true);
     };
   });
 
-export const addBook = async (book) => {
-  const tx = db.transaction("books", "readwrite");
-  const books = tx.objectStore("books");
-  const req = books.add(book);
+export const addBook = (book) =>
+  new Promise((resolve, reject) => {
+    const tx = db.transaction("books", "readwrite");
+    const books = tx.objectStore("books");
+    const req = books.add(book);
 
-  req.onsuccess = () => {
-    console.log("Книга добавлена в хранилище", req.result);
-  };
+    req.onsuccess = () => {
+      resolve();
+    };
 
-  req.onerror = () => {
-    if (req.error.name == "ConstraintError") {
-      alert("Такая книга уже существует!");
-    }
-  };
-};
+    req.onerror = () => {
+      if (req.error.name == "ConstraintError") {
+        reject("Такая книга уже существует");
+      }
+    };
+  });
 
 export const removeBook = async (name) => {
   const tx = db.transaction("books", "readwrite");
@@ -49,7 +48,7 @@ export const removeBook = async (name) => {
 
   req.onerror = () => {
     if (req.error) {
-      alert("Упс! Что - то пошло не так, книга не удалилась");
+      alert("Упс! Что - то пошло не так, книга не удалилась в хранилище");
     }
   };
 };
@@ -61,7 +60,7 @@ export const editBook = async (book) => {
 
   req.onerror = () => {
     if (req.error) {
-      alert("Упс! Что - то пошло не так, книга не отредактирована");
+      alert("Упс! Что - то пошло не так, книга не отредактирована в хранилище");
     }
   };
 };

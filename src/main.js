@@ -23,18 +23,21 @@ if (!localStorage.getItem("lib-login")) {
 }
 
 export const getAllBooks = async () => {
-  favouriteBooksList.innerHTML = "";
-  allBooksList.innerHTML = "";
-  const isDbReady = await initDB();
-  if (isDbReady) {
-    const books = await getBooks();
-    console.log("All books", books);
-    renderBooks(books);
+  try {
+    favouriteBooksList.innerHTML = "";
+    allBooksList.innerHTML = "";
+    const isDbReady = await initDB();
+    if (isDbReady) {
+      const books = await getBooks();
+      renderBooks(books);
+    }
+  } catch {
+    alert("Не получилось получить все книги, попробуйте позже");
   }
 };
-
 getAllBooks();
 
+// Слушатели для радио элементов которые меняют форму с файловой на поля ввода
 downloadRadioElement.addEventListener("change", () => {
   form.classList.add("download");
   form.classList.remove("write");
@@ -45,44 +48,54 @@ writeRadioElement.addEventListener("change", () => {
   form.classList.remove("download");
 });
 
+fileInput.addEventListener("change", () => {
+  fileInput.nextElementSibling.innerText = fileInput.files[0].name;
+});
+
 form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+  try {
+    e.preventDefault();
 
-  const formData = new FormData();
+    const formData = new FormData();
 
-  if (descriptionInput.value === "" || titleInput.value === "") {
-    alert("Для начала заполните заголовок и описание книги");
-    return;
-  }
+    formData.append("login", localStorage.getItem("lib-login"));
 
-  formData.append("login", localStorage.getItem("lib-login"));
+    if (form.classList.contains("write")) {
+      if (descriptionInput.value === "" || titleInput.value === "") {
+        alert("Для начала заполните заголовок и описание книги");
+        return;
+      }
 
-  if (form.classList.contains("write")) {
-    const file = new File([descriptionInput.value], titleInput.value, {
-      type: "text/plain",
+      const file = new File([descriptionInput.value], titleInput.value, {
+        type: "text/plain",
+      });
+      formData.append("file", file);
+    } else {
+      if (!fileInput.files[0]) {
+        alert("Вы не прикрепили файл");
+        return;
+      }
+      formData.append("file", fileInput.files[0]);
+    }
+
+    let response = await fetch("https://apiinterns.osora.ru/", {
+      method: "POST",
+      body: formData,
     });
-    formData.append("file", file);
-  } else {
-    formData.append("file", fileInput.files[0]);
+
+    let result = await response.json();
+
+    const book = {
+      name: result.title.replace(/\.[^/.]+$/, ""),
+      text: convertToUtf8(result.text),
+      isRead: false,
+      isFavorite: false,
+      date: new Date(),
+    };
+
+    await addBook(book);
+    createBookElement(book);
+  } catch (e) {
+    alert(e);
   }
-
-  let response = await fetch("https://apiinterns.osora.ru/", {
-    method: "POST",
-    body: formData,
-  });
-
-  let result = await response.json();
-
-  console.log(result);
-
-  const book = {
-    name: result.title.replace(/\.[^/.]+$/, ""),
-    text: convertToUtf8(result.text),
-    isRead: false,
-    isFavorite: false,
-    date: new Date(),
-  };
-
-  addBook(book);
-  createBookElement(book);
 });

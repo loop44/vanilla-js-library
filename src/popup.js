@@ -20,6 +20,10 @@ popupSubmitBtn.onclick = () => {
   popupOverlay.classList.remove("visible");
   bookElement.querySelector("h4").innerText = popupHeader.value;
   const originalBookData = { ...bookData };
+  if (popupHeader.value === "" || popupText.value === "") {
+    alert("Для начала заполните заголовок и описание книги");
+    return;
+  }
   bookData.name = popupHeader.value;
   bookData.text = popupText.value;
   removeBook(originalBookData.name);
